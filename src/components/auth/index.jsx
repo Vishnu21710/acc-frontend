@@ -20,7 +20,7 @@ const Auth = () => {
   return (
     <div onClick={onClose} className="w-full fixed flex items-center p-5 justify-center bg-black bg-opacity-50 z-[20] min-h-full  backdrop-filter backdrop-blur-md">
       <div onClick={(e)=>e.stopPropagation()}>
-      {showSignUp ? <Signup handleClick={handleClick}/> : <Signin onClose={onClose} handleClick={handleClick}/>}
+      {showSignUp ? <Signup onClose={onClose} handleClick={handleClick}/> : <Signin onClose={onClose} handleClick={handleClick}/>}
       </div>
     </div>
   );
