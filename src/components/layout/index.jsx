@@ -13,7 +13,7 @@ const RootLayout = ({ children }) => {
       <ReferalModal/>
       <Toaster richColors/>
       <div>
-        <Banner />
+       
         <Navbar />
         {children}
         <Footer />

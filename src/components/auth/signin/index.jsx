@@ -9,8 +9,8 @@ const Signin = ({handleClick, onClose}) => {
   const {setAuth} = useAuth()
 
   const [formInput, setFormInput] = useState({
-    email: "",
-    password: ""
+    email: "mark@gmail.com",
+    password: "mark"
   })
 
   console.log(formInput);
@@ -44,8 +44,10 @@ const Signin = ({handleClick, onClose}) => {
 
   return (
     <div className="flex flex-col gap-y-5 max-w-xl bg-white p-7 rounded-md">
-      <FormInput onChange={onChange} name={"email"}  label={"Email"} required={true} placeholder={"Enter your email"} type={"email"}/>
-      <FormInput onChange={onChange} name={"password"} label={"Password"} required={true} placeholder={"Enter Password"} type={"password"}/>
+      <h1 className="font-bold text-4xl ">Sign In</h1>
+      <p className="text-xs text-gray-600">Use the default credentials below to login</p>
+      <FormInput value={formInput.email} onChange={onChange} name={"email"}  label={"Email"} required={true} placeholder={"Enter your email"} type={"email"}/>
+      <FormInput value={formInput.password} onChange={onChange} name={"password"} label={"Password"} required={true} placeholder={"Enter Password"} type={"password"}/>
       <p>Don't have an accoun?t - <span onClick={handleClick} className="text-purple-600 cursor-pointer">Sign Up</span></p>
       <button onClick={login} className="bg-black text-white hover:bg-black/90 transition p-2 rounded-md">
         Submit
