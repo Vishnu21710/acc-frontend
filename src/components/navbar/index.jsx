@@ -5,6 +5,7 @@ import { AuthModalContext } from "../../contexts/AuthModalContext";
 import { useAuth } from "../../contexts/AuthContext";
 import Loading from "../loading";
 import Banner from "../banner";
+import MobileNav from "./mobile-side-nav";
 
 const Navbar = (props) => {
   const { onOpen, isOpen, onClose } = useContext(AuthModalContext);
@@ -15,11 +16,24 @@ const Navbar = (props) => {
     return (
       <div>
         <Loading />
-        
       </div>
-  );
+    );
   }
 
+  const nav_links = [
+    {
+      title: "About",
+      href: "",
+    },
+    {
+      title: "Features",
+      href: "",
+    },
+    {
+      title: "Updates",
+      href: "https://accredian.com/whyaccredian",
+    },
+  ];
   console.log(auth);
   return (
     <>
@@ -35,9 +49,13 @@ const Navbar = (props) => {
                 className="h-12 w-12 relative"
               />
             </div>
-            <div className="border border-white sm:hidden border-opacity-25 p-1 rounded-md inline-block">
-              <MenuIcon className="text-white " />
-            </div>
+            <MobileNav
+              nav_links={nav_links}
+              onOpen={onOpen}
+              onClose={onClose}
+              open={open}
+              auth={auth}
+            />
             <nav className="hidden text-white sm:flex gap-6 items-center ">
               <a
                 href=""
@@ -63,13 +81,13 @@ const Navbar = (props) => {
               >
                 Help
               </a>
-              <a
+              {auth?.auth && <a
                 href=""
-                onClick={() => localStorage.removeItem("jwt")}
+                onClick={() => localStorage.removeItem("jwt")>auth.setAuth(null)}
                 className="text-opacity-60 text-white hover:text-opacity-100 transition"
               >
                 Logout
-              </a>
+              </a>}
               <button
                 className="bg-white text-black px-4 rounded-lg h-9"
                 onClick={() => {

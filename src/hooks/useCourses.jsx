@@ -8,25 +8,22 @@ export const useCourses = () => {
 
   const [courses, setCourses] = useState([
     {
-      title: "Full Stack Development",
+      title: "Data Science",
       id: 1,
     },
     {
-      title: "Digital Marketing",
+      title: "Project Management",
       id: 2,
     },
     {
-      title: "Data Science ",
+      title: "Machine Learning",
       id: 3,
     },
     {
-      title: "Project Management",
+      title: "Full Stack",
       id: 4,
     },
-    {
-      title: "MERN Stack",
-      id: 5,
-    },
+    
   ]);
   const [error, setError] = useState();
 
