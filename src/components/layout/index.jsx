@@ -1,24 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../navbar";
 import Banner from "../banner";
 import Footer from "../footer";
 import Auth from "../auth";
 import { Toaster } from "sonner";
 import ReferalModal from "../modals/referral-modal";
-import { useAuth } from "../../contexts/AuthContext";
+import { API_URL } from "../../constants";
 import Loading from "../loading";
 
 const RootLayout = ({ children }) => {
 
-  const auth = useAuth();
+  const [backendLoading, setBackendLoading] = useState(true)
 
-  if (auth.loading) {
-    return (
-      <div>
-        <Loading />
-      </div>
-    );
+  useEffect(()=>{
+    const checkBackend = async()=>{
+      try {
+        const response = await axios.get(`${API_URL}/health`)
+        console.log(response, "HEALTH CHECK");
+        setBackendLoading(false)
+      } catch (error) {
+       setBackendLoading(false) 
+      }
+    }
+    checkBackend()
+  }, [setBackendLoading])
+
+  if(backendLoading){
+    return <Loading/>
   }
+
+  
   return (
     <div>
       <Auth />
